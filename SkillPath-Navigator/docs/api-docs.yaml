@@ -1,0 +1,295 @@
+openapi: 3.0.0
+info:
+  title: SkillPath Navigator API
+  description: AI-Powered Personalized Learning Path Generator for NCVET
+  version: 1.0.0
+  contact:
+    email: support@skillpath.in
+
+servers:
+  - url: http://localhost:8000
+    description: Development server
+  - url: https://api.skillpath.in
+    description: Production server
+
+tags:
+  - name: Authentication
+    description: User authentication and registration
+  - name: Users
+    description: User profile management
+  - name: Courses
+    description: Course catalog and management
+  - name: Machine Learning
+    description: AI-powered recommendations and insights
+
+paths:
+  /api/users/register:
+    post:
+      tags:
+        - Authentication
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+                - full_name
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  minLength: 6
+                full_name:
+                  type: string
+                phone:
+                  type: string
+                preferred_language:
+                  type: string
+                  enum: [en, hi, ta, te, bn, mr]
+      responses:
+        '201':
+          description: User created successfully
+        '400':
+          description: Email already registered
+
+  /api/users/login:
+    post:
+      tags:
+        - Authentication
+      summary: Login user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                  token_type:
+                    type: string
+        '401':
+          description: Invalid credentials
+
+  /api/users/me:
+    get:
+      tags:
+        - Users
+      summary: Get current user information
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: User information
+        '401':
+          description: Unauthorized
+
+  /api/users/profile:
+    post:
+      tags:
+        - Users
+      summary: Create or update learner profile
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LearnerProfile'
+      responses:
+        '201':
+          description: Profile created/updated
+        '401':
+          description: Unauthorized
+
+    get:
+      tags:
+        - Users
+      summary: Get learner profile
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Learner profile
+        '404':
+          description: Profile not found
+
+  /api/courses/:
+    get:
+      tags:
+        - Courses
+      summary: List all courses
+      parameters:
+        - name: sector
+          in: query
+          schema:
+            type: string
+        - name: nsqf_level
+          in: query
+          schema:
+            type: string
+            enum: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+        - name: skip
+          in: query
+          schema:
+            type: integer
+            default: 0
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 50
+      responses:
+        '200':
+          description: List of courses
+
+  /api/courses/{course_id}:
+    get:
+      tags:
+        - Courses
+      summary: Get course details
+      parameters:
+        - name: course_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Course details
+        '404':
+          description: Course not found
+
+  /api/ml/recommendations:
+    post:
+      tags:
+        - Machine Learning
+      summary: Get personalized course recommendations
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: top_k
+          in: query
+          schema:
+            type: integer
+            default: 10
+        - name: include_explanations
+          in: query
+          schema:
+            type: boolean
+            default: true
+      responses:
+        '200':
+          description: Personalized recommendations
+        '404':
+          description: Profile not found
+
+  /api/ml/learning-path:
+    get:
+      tags:
+        - Machine Learning
+      summary: Generate personalized learning path
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: career_goal
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: target_nsqf_level
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Learning path generated
+
+  /api/ml/skill-gap-analysis:
+    get:
+      tags:
+        - Machine Learning
+      summary: Analyze skill gaps for target role
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: target_role
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Skill gap analysis
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    LearnerProfile:
+      type: object
+      required:
+        - user_id
+        - education_level
+      properties:
+        user_id:
+          type: integer
+        education_level:
+          type: string
+          enum: [below_10th, 10th, 12th, diploma, graduate, post_graduate, doctorate]
+        prior_skills:
+          type: array
+          items:
+            type: string
+        career_aspirations:
+          type: array
+          items:
+            type: string
+        socio_economic_status:
+          type: string
+          enum: [bpl, apl, middle_class, upper_middle]
+        learning_pace:
+          type: string
+          enum: [slow, moderate, fast]
+        location:
+          type: string
+        age:
+          type: integer
+          minimum: 15
+          maximum: 100
+        work_experience_years:
+          type: integer
+          minimum: 0
+        current_occupation:
+          type: string
+        interests:
+          type: array
+          items:
+            type: string

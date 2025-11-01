@@ -1,0 +1,31 @@
+id,title,description,nsqf_level,sector,duration_hours,skills_covered,prerequisites,certification_body,is_active
+1,Basic Computer Skills,Introduction to computers and basic operations,2,Information Technology,40,"['Computer Basics','MS Office','Internet Browsing']","[]",NSDC,true
+2,Data Entry Operator,Professional data entry and management skills,3,Information Technology,60,"['Typing','Data Management','MS Excel']","['Computer Basics']",NSDC,true
+3,Web Development Fundamentals,Learn HTML CSS and JavaScript basics,4,Information Technology,120,"['HTML','CSS','JavaScript','Web Design']","['Computer Basics']",NSDC,true
+4,Python Programming,Comprehensive Python programming course,5,Information Technology,100,"['Python','Programming','Problem Solving']","['Computer Basics']",NSDC,true
+5,Data Analysis with Python,Analyze data using Python and libraries,6,Information Technology,80,"['Python','Data Analysis','Pandas','NumPy']","['Python']",NSDC,true
+6,Machine Learning Basics,Introduction to machine learning concepts,7,Information Technology,120,"['Machine Learning','Python','Statistics']","['Python','Data Analysis']",NSDC,true
+7,Digital Marketing Fundamentals,Learn digital marketing strategies,4,Marketing,80,"['SEO','Social Media','Content Marketing']","[]",NSDC,true
+8,Advanced Digital Marketing,Master digital marketing techniques,6,Marketing,100,"['SEO','SEM','Analytics','Email Marketing']","['Digital Marketing Fundamentals']",NSDC,true
+9,Graphic Design Basics,Introduction to graphic design principles,4,Design,90,"['Photoshop','Illustrator','Design Principles']","[]",NSDC,true
+10,UI/UX Design,User interface and experience design,6,Design,110,"['UI Design','UX Research','Figma','Prototyping']","['Graphic Design Basics']",NSDC,true
+11,Accounting Fundamentals,Basic accounting principles and practices,4,Finance,70,"['Accounting','Tally','Financial Statements']","[]",NSDC,true
+12,Advanced Accounting,Advanced accounting and taxation,6,Finance,90,"['Advanced Accounting','GST','Income Tax','Audit']","['Accounting Fundamentals']",NSDC,true
+13,Customer Service Excellence,Professional customer service skills,3,Retail,50,"['Communication','Customer Service','Problem Solving']","[]",NSDC,true
+14,Sales and Marketing,Sales techniques and marketing strategies,5,Retail,80,"['Sales','Marketing','Negotiation','CRM']","['Customer Service Excellence']",NSDC,true
+15,Project Management Basics,Introduction to project management,5,Management,70,"['Project Management','Planning','Scheduling']","[]",NSDC,true
+16,Agile Project Management,Agile methodologies and Scrum,7,Management,90,"['Agile','Scrum','Kanban','Project Management']","['Project Management Basics']",NSDC,true
+17,Mobile App Development,Build mobile apps for Android and iOS,6,Information Technology,140,"['Mobile Development','React Native','App Design']","['JavaScript']",NSDC,true
+18,Cloud Computing Basics,Introduction to cloud platforms,5,Information Technology,80,"['Cloud Computing','AWS','Azure Basics']","['Computer Basics']",NSDC,true
+19,Cybersecurity Fundamentals,Basic cybersecurity concepts,5,Information Technology,90,"['Cybersecurity','Network Security','Ethical Hacking']","['Computer Basics']",NSDC,true
+20,Content Writing,Professional content writing skills,4,Media,60,"['Content Writing','SEO Writing','Copywriting']","[]",NSDC,true
+21,Video Editing,Professional video editing techniques,5,Media,80,"['Video Editing','Premiere Pro','After Effects']","[]",NSDC,true
+22,Electrical Technician,Electrical installation and maintenance,4,Manufacturing,100,"['Electrical Work','Wiring','Safety']","[]",NSDC,true
+23,Plumbing Technician,Plumbing installation and repair,3,Construction,80,"['Plumbing','Pipe Fitting','Maintenance']","[]",NSDC,true
+24,Welding Technician,Welding techniques and safety,4,Manufacturing,90,"['Welding','Metal Work','Safety']","[]",NSDC,true
+25,Automobile Mechanic,Vehicle maintenance and repair,4,Automotive,120,"['Auto Repair','Engine Maintenance','Diagnostics']","[]",NSDC,true
+26,Beauty and Wellness,Beauty therapy and wellness services,3,Beauty & Wellness,70,"['Beauty Therapy','Makeup','Hair Styling']","[]",NSDC,true
+27,Healthcare Assistant,Basic healthcare and patient care,4,Healthcare,80,"['Patient Care','First Aid','Medical Terminology']","[]",NSDC,true
+28,Nursing Assistant,Professional nursing assistance,5,Healthcare,100,"['Nursing','Patient Care','Medical Procedures']","['Healthcare Assistant']",NSDC,true
+29,Hospitality Management,Hotel and hospitality operations,5,Hospitality,90,"['Hotel Management','Customer Service','Operations']","[]",NSDC,true
+30,Food Production,Professional cooking and food preparation,4,Hospitality,100,"['Cooking','Food Safety','Menu Planning']","[]",NSDC,true
